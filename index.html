@@ -68,3 +68,58 @@
     </footer>
 </body>
 </html>
+<script>
+    const estudiantes=[
+        {nombre: "Ana", edad:18, calificaciones: [8, 9, 7]},
+        {nombre: "Luis", edad:20, calificaciones: [5, 6, 4]},
+        {nombre: "Maria", edad:19, calificaciones: [9, 9, 10]},
+        {nombre: "Carlos", edad:21, calificaciones: [6, 7, 5]},
+        {nombre: "Sofia", edad:18, calificaciones: [10, 10, 9]}
+    ]
+    //funcion para capturar promedio
+    function calcularPromedio(calificaciones){
+        let suma = 0
+        for (let i = 0; i< calificaciones.length; i++){
+            suma += calificaciones[i]
+        }
+        return suma / calificaciones.length;
+    }
+    // mostrar promedio de cada estudiante
+
+    function mostrarPromedio(estudiantes){
+        for (let i = 0; i< estudiantes.length; i++){
+            const estudiante= estudiantes[i]
+            const promedio= calcularPromedio(estudiante.calificaciones)
+            console.log(`${estudiante.nombre}: ${promedio.toFixed(1)}`)
+        }
+
+    }
+    function promedioAlto(estudiantes){
+        for (let i = 0; i< estudiantes.length; i++){
+            const estudiante = estudiantes[i]
+            const promedio = calcularPromedio(estudiante.calificaciones)
+            if (promedio >= 7){
+                console.log(`-${estudiante.nombre}`)
+            }
+        }
+    }
+    function buscarEstudiantes(estudiantes, nombreBuscado){ 
+        for (let i = 0; i< estudiantes.length; i++){
+            const estudiante = estudiantes[i]
+            if (estudiante.nombre == nombreBuscado) {
+                console.log('informacion del Estudiante: ')
+                console.log(estudiante)
+                return
+            }
+        }
+        console.log(`no se encontro con el nombre buscado ${nombreBuscado}`)
+    }
+    // ejecucion
+    console.log("promedio de los estudiantes:");
+    mostrarPromedio(estudiantes);
+    console.log("Promedio altos:")
+    promedioAlto(estudiantes);
+    console.log("/n");
+    buscarEstudiantes(estudiantes, "Sofia");
+
+</script>
